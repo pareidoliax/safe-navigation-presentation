@@ -54,9 +54,29 @@
 
             New to Ruby 2.3
 
+            Similar to Rails `try?(:method)`
+
             Shorthand for a common pattern.
 
             Might be confused with `&block`
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Shorthand for Conditional AND
+
+            Often to avoid a no method exception we use this pattern
+
+            ```ruby
+              current_user && current_user.name
+            ```
+
+            The safe navigation operator shortens this to one operation
+
+            ```ruby
+              current_user&.name
+            ```
           </script>
         </section>
 
