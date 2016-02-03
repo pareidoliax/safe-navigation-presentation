@@ -54,9 +54,9 @@
 
             New to Ruby 2.3
 
-            Similar to Rails `try?(:method)`
+            Shorthand for a common pattern
 
-            Shorthand for a common pattern.
+            Similar to Rails `try(:method)`
 
             Might be confused with `&block`
           </script>
@@ -77,6 +77,26 @@
             ```ruby
               current_user&.name
             ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Similar to Rails `.try(:method)`
+
+            Safe Navigation passes forward `nil` while the Rails `try(:method)` catches any exception thrown by the method call.
+
+            This returns `nil` with `.try()`
+            ```ruby
+              42.try(:first)
+            ```
+
+            but throws a no method exception when using safe navigation
+            ```ruby
+              42&.first
+            ```
+
+            This makes safe naviagation useful for situations in Rails where you just want to handle the possiblity of a nil object.
           </script>
         </section>
 
