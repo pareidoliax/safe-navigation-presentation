@@ -122,6 +122,65 @@
           </script>
         </section>
 
+        <section data-markdown>
+          <script type="text/template">
+            ## Pundit Policy file
+
+
+            ```ruby
+            class ContactPolicy < ApplicationPolicy
+
+              def show?
+                user.present? && [:admin, :manager, :support, :customer].include?(user.role)
+              end
+
+              def new?
+                show?
+              end
+              
+              def create?
+                new?
+              end
+
+              def edit?
+                user.present? && [:admin, :manager, :support].include?(user.role)
+              end
+
+              def update?
+                show?
+              end
+
+              def delete?
+                user.present? && [:admin].include?(user.role)
+              end
+
+            end
+            ```
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Policy with Safe Navigation Operator
+
+            ```ruby
+              def edit?
+                user.present? && [:admin, :manager, :support].include?(user.role)
+              end
+            ```
+
+            becomes
+
+            ```ruby
+              def edit?
+                [:admin, :manager, :support].include?(user&.role)
+              end
+            ```
+          </script>
+        </section>
+
+
       </div>
 
     </div>
