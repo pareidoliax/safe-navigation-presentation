@@ -100,6 +100,28 @@
           </script>
         </section>
 
+        <section data-markdown>
+          <script type="text/template">
+            ## Not to be confused with `&block`
+
+            Safe Navigator operator makes sense but could be confused with the way Ruby handles named blocks
+
+            ```ruby
+              def speak(&block)
+                puts block.call
+              end
+            ```
+
+            or
+
+            ```ruby
+              [1, 1, 1].map(& :to_s)
+            ```
+
+            This makes safe naviagation useful for situations in Rails where you just want to handle the possiblity of a nil object.
+          </script>
+        </section>
+
       </div>
 
     </div>
